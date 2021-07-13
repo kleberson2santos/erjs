@@ -1,28 +1,20 @@
-
 import { useState } from 'react';
 import './App.css';
+import Card from './components/Card';
 import Post from './components/Post';
-import Sidebar from './components/Sidebar';
 
 function App() {
-  const [post, setPost] =  useState({
+  const [post] = useState({
     title: 'Título qualquer',
-    content: 'Lorem ipsum dolor sit amet.'
-  })
-
-  //sto -> snippet
-  // setTimeout(() => {
-  //   setPost({
-  //     title: 'Título maneiro',
-  //     content: 'Lorem ipsum dolor sit amet.'
-  //   })
-  // }, 5000);
+    content: 'Lorem ipsum dolor sit amet.',
+  });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Sidebar post={post}/>
-        <Post post={post} totalComments={12}/>
+    <div className='App'>
+      <header className='App-header'>
+        <Card title={'Card'}>
+          <Post post={post} totalComments={12} />
+        </Card>
       </header>
     </div>
   );
