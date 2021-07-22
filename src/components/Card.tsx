@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { PropsWithChildren, ReactNode } from 'react';
-import './Card.css';
+import * as C from './Card.styles';
 
 type CardProps = PropsWithChildren<{
   title: string;
@@ -14,9 +14,9 @@ type CardProps = PropsWithChildren<{
 
 export default function Card(props: CardProps) {
   return (
-    <div className={`Card ${props.align || 'center'}`}>
-      <div>{props.title}</div>
+    <C.Wrapper align={props.align || 'left'}>
+      <C.Title>{props.title}</C.Title>
       {props.children}
-    </div>
+    </C.Wrapper>
   );
 }
