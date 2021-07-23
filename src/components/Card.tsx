@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { PropsWithChildren, ReactNode } from 'react';
+import Button from './Button';
 
 type CardProps = PropsWithChildren<{
   title: string;
@@ -21,6 +22,9 @@ export default function Card(props: CardProps) {
     >
       <div>{props.title}</div>
       {props.children}
+      <div>
+        <Button onClick={() => console.log('Uiiu')}>Ver mais</Button>
+      </div>
     </div>
   );
 }
