@@ -11,19 +11,9 @@ interface ButtonState {
 
 class Button extends Component<ButtonProps, ButtonState> {
   constructor(props: ButtonProps) {
-    console.log('constructor');
+    // console.log('constructor');
     super(props);
     this.state = { alreadyCliked: !!props.initializeClicked };
-  }
-
-  componentDidMount() {
-    console.log('componentDidMount');
-    setTimeout(() => {
-      this.setState({
-        alreadyCliked: false,
-      });
-      console.log('rodou o timeout');
-    }, 5000);
   }
 
   render() {
@@ -40,6 +30,21 @@ class Button extends Component<ButtonProps, ButtonState> {
         {this.props.children}
       </button>
     );
+  }
+
+  // componentDidMount() {
+  //   console.log('componentDidMount');
+  //   setTimeout(() => {
+  //     this.setState({
+  //       alreadyCliked: false,
+  //     });
+  //   }, 5000);
+  // }
+
+  componentDidUpdate(prevProps: ButtonProps, prevState: ButtonState) {
+    console.log('anterior', prevProps);
+    console.log('atual', this.props);
+    console.log('component atualizado');
   }
 }
 
