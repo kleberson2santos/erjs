@@ -7,18 +7,16 @@ interface ButtonProps {
 
 interface ButtonState {
   alreadyCliked: boolean;
+  timerId?: NodeJS.Timeout;
 }
 
 class Button extends Component<ButtonProps, ButtonState> {
   constructor(props: ButtonProps) {
-    // console.log('constructor');
     super(props);
     this.state = { alreadyCliked: !!props.initializeClicked };
   }
 
   render() {
-    console.log('render');
-    // console.log(this.state);
     return (
       <button
         onClick={() => {
@@ -32,19 +30,17 @@ class Button extends Component<ButtonProps, ButtonState> {
     );
   }
 
-  // componentDidMount() {
-  //   console.log('componentDidMount');
-  //   setTimeout(() => {
-  //     this.setState({
-  //       alreadyCliked: false,
-  //     });
-  //   }, 5000);
-  // }
+  componentDidMount() {
+    const timerId = setInterval(() => {
+      console.log('to rodando');
+    }, 3000);
 
-  componentDidUpdate(prevProps: ButtonProps, prevState: ButtonState) {
-    console.log('anterior', prevProps);
-    console.log('atual', this.props);
-    console.log('component atualizado');
+    this.setState({ timerId });
+  }
+
+  componentWillUnmount() {
+    console.log('button será desmontado');
+    if (this.state.timerId) clearInterval(this.state.timerId);
   }
 }
 
